@@ -540,3 +540,61 @@ Nicht sinnvoll:
 Erkenntnis:
 
 > Coverage-Gates sind Leitplanken, kein Qualitätsbeweis.
+
+## Zusammenfassung
+
+Die Demo zeigt die wichtigsten Code-Coverage-Erkenntnisse:
+
+1. Coverage entsteht erst durch Testausführung.
+2. Testcode im Report verfälscht die Gesamtkennzahl.
+3. Function Coverage ist oft wenig aussagekräftig.
+4. Line Coverage ist besser, aber nicht ausreichend.
+5. Branch Coverage zeigt die eigentlichen Testlücken.
+6. Hohe Coverage beweist keine Testqualität.
+7. Callback-Code muss aktiv stimuliert werden.
+8. Für Robotiksoftware sind Fehler-, Recovery- und Zustandsübergänge besonders wichtig.
+9. lcov eignet sich sehr gut zum Verstehen der klassischen gcc/gcov-Toolchain.
+10. gcovr ist besonders praktisch für CI-Umgebungen, weil es Text-, HTML-, XML-Reports und Quality Gates direkt unterstützt.
+
+## Toolrollen
+
+| Tool | Rolle |
+|---|---|
+| gcc/g++ | kompiliert den Code und instrumentiert ihn mit Coverage-Messpunkten |
+| Testbinary / ctest | führt den instrumentierten Code aus und erzeugt Runtime-Coverage-Daten |
+| gcov | interpretiert die von gcc erzeugten `.gcno`- und `.gcda`-Dateien |
+| lcov | sammelt und filtert gcov-Daten, typischerweise für HTML-Reports |
+| genhtml | erzeugt aus lcov-Tracefiles lesbare HTML-Reports |
+| gcovr | nutzt gcov-Daten und erzeugt CI-freundliche Reports wie Text, HTML, Cobertura XML, JSON oder SonarQube XML |
+
+## lcov vs. gcovr
+
+| Aspekt | lcov + genhtml | gcovr |
+|---|---|---|
+| Hauptnutzen | klassische HTML-Coverage-Reports | CI-freundliche Coverage-Auswertung |
+| Datenbasis | gcc/gcov-Daten | gcc/gcov-Daten |
+| HTML-Report | sehr gut | gut |
+| Textausgabe im CI-Log | weniger komfortabel | sehr gut |
+| XML/Cobertura | nicht Hauptfokus | direkt unterstützt |
+| Branch Coverage | explizit aktivieren | über `--branches` |
+| Excludes | über `lcov --remove` | über `--filter` / `--exclude` |
+| Quality Gates | zusätzliche Logik nötig | über `--fail-under-line`, `--fail-under-branch` |
+| Didaktischer Wert | sehr gut zum Verstehen der Toolchain | sehr gut für CI-Praxis |
+
+## Merksatz
+
+> gcc setzt die Messpunkte.
+
+> Tests erzeugen Laufzeitdaten.
+
+> gcov versteht die Rohdaten.
+
+> lcov sammelt und filtert sie.
+
+> genhtml macht sie lesbar.
+
+> gcovr macht sie CI-freundlich auswertbar.
+
+## Finaler Takeaway
+
+> Code Coverage zeigt uns nicht, dass unser Code korrekt ist — aber sehr gut, wo wir noch nicht hingesehen haben.
