@@ -474,3 +474,24 @@ Nachteile:
 Erkenntnis:
 
 > lcov ist sehr gut für HTML-Reports, aber in CI oft etwas sperrig.
+
+## 21 - gcovr lokal verwenden
+
+`gcovr` liest wie lcov die von gcc/gcov erzeugten Coverage-Daten, bietet aber CI-freundlichere Ausgabeformate.
+
+Beispiel:
+
+```bash
+gcovr
+  --root .. \
+  --filter '../src/.*' \
+  --exclude '../test/.*' \
+  --branches \
+  --html \
+  --html-details \
+  --output coverage_gcovr.html
+```
+
+Erkenntnis:
+
+> gcovr ist oft angenehmer, wenn Coverage-Ergebnisse maschinenlesbar in CI verarbeitet werden sollen.
