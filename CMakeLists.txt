@@ -14,4 +14,16 @@ add_library(coverage_demo
     src/mode_decision.cpp
 )
 
+add_executable(coverage_tests
+    test/test_mode_decision.cpp
+)
+
+target_link_libraries(coverage_tests
+    coverage_demo
+    gtest
+    gtest_main
+    pthread
+)
+
 enable_testing()
+add_test(NAME coverage_tests COMMAND coverage_tests)

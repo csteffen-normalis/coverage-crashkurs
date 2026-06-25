@@ -140,3 +140,23 @@ Die Funktion `decideMode()` enthält drei fachliche Pfade:
 Damit eignet sie sich gut, um später Function, Line und Branch Coverage zu vergleichen.
 
 Noch gibt es keine Tests. Also gibt es auch keine aussagekräftige Runtime-Coverage.
+
+## 03 - Erster Test
+
+Der erste Test deckt nur den Happy Path ab:
+
+```text
+sensor_ok = true
+manual_mode = false
+=> AUTO
+```
+
+Nicht getestet sind:
+```text
+sensor_ok = false => ERROR
+manual_mode = true => MANUAL
+```
+
+Erkenntnis:
+
+> Ein einzelner Test kann eine Funktion ausführen, ohne alle fachlichen Pfade zu prüfen.
