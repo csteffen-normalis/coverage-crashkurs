@@ -205,3 +205,22 @@ Richtige Frage:
 Erkenntnis:
 
 > Coverage-Kennzahlen sind nur sinnvoll, wenn klar ist, welche Dateien gemessen werden.
+
+## 06 - Produktivcode isolieren
+
+Der zweite Report filtert Testcode heraus:
+
+```bash
+lcov --remove coverage.info '/usr/*' '*/test/*' -o coverage_productive.info
+```
+
+Jetzt betrachten wir nur noch den Produktivcode.
+
+Vergleich:
+
+- `coverage_all_report`: enthält Produktivcode und Testcode
+- `coverage_productive_report`: enthält nur Produktivcode
+
+Erkenntnis:
+
+> Der produktive Coverage-Wert ist meist niedriger, aber ehrlicher.
