@@ -160,3 +160,27 @@ manual_mode = true => MANUAL
 Erkenntnis:
 
 > Ein einzelner Test kann eine Funktion ausführen, ohne alle fachlichen Pfade zu prüfen.
+
+## 04 - Erster Coverage-Report
+
+Dieser Report sammelt zunächst alles, was im Build-Verzeichnis Coverage-Daten erzeugt hat.
+
+Das umfasst aktuell sowohl:
+
+- Produktivcode unter `src/`
+- Testcode unter `test/`
+
+Befehle:
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+ctest --output-on-failure
+../scripts/generate_coverage_all.sh
+```
+
+Erkenntnis:
+
+> Coverage entsteht erst nach Build und Testausführung.
