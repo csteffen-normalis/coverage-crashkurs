@@ -21,3 +21,110 @@ Nach Durcharbeiten der Commit-Historie sollen die Teilnehmer:
 13. Coverage in CI-Pipelines integrieren können
 14. die Vor- und Nachteile von lcov und gcovr für CI-Anwendungen verstehen
 15. einfache Coverage-Gates mit gcovr konfigurieren können
+
+## Lernpfad
+
+Die Demo ist bewusst entlang einer Git-Historie aufgebaut.
+
+Jeder Commit führt genau eine neue Idee ein und dokumentiert die dazugehörige Erkenntnis in dieser README.
+
+Die empfohlene Reihenfolge ist:
+
+```text
+Setup
+ ↓
+Coverage-Instrumentierung
+ ↓
+Erster Coverage-Report
+ ↓
+Testcode verfälscht Kennzahlen
+ ↓
+Function Coverage
+ ↓
+Line Coverage
+ ↓
+Branch Coverage
+ ↓
+Coverage ≠ Testqualität
+ ↓
+Robotik-State-Machine
+ ↓
+ROS1-Callback-Fallstrick
+ ↓
+CI mit lcov
+ ↓
+CI mit gcovr
+```
+
+## Schritt-für-Schritt-Demo mit Git-Historie
+
+Diese Demo ist so aufgebaut, dass Teilnehmer jederzeit über
+
+```bash
+git log --oneline --reverse
+```
+
+die Commit-Historie durchgehen und die einzelnen Schritte nachvollziehen können und mit
+
+```bash
+git checkout <commit-hash>
+```
+
+jeden Kursstand reproduzieren können.
+
+## In der Demo verwendete Tools
+
+1. `gcc`/`g++` – Compiler mit Coverage-Instrumentierung
+2. `gcov` – Coverage-Datenanalyse-Tool von GNU
+3. `lcov` – Erweiterung von gcov für HTML-Reports
+4. `genhtml` – Tool zur Umwandlung von lcov-Daten in HTML
+5. `gcovr` – Alternative zu lcov für Coverage-Reports, besonders in CI-Umgebungen
+6. `cmake` – Build-System, um die Coverage-Instrumentierung zu konfigurieren
+7. `make` – Build-Tool, um die Kompilierung und Testausführung zu automatisieren
+8. `gtest` – Test-Framework für die Erstellung von Unit-Tests (optional, aber empfohlen)
+9. `git` – Versionskontrollsystem, um die Demo-Historie zu verwalten
+10. `bash` – Shell für die Ausführung von Build- und Coverage-Befehlen
+11. CI-Tools (z.B. GitHub Actions, GitLab CI) – für die Integration von Coverage in Continuous Integration Pipelines
+
+```bash
+gcc --version
+gcov --version
+lcov --version
+genhtml --version
+gcovr --version
+cmake --version
+make --version
+dpkg -l | grep libgtest-dev
+git --version
+bash --version
+```
+
+| Tool | Version |
+|------|---------|
+| gcc  | gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0 |
+| gcov | gcov (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0 |
+| lcov | lcov: LCOV version 1.14 |
+| genhtml | genhtml: LCOV version 1.14 |
+| gcovr | gcovr 4.2 |
+| cmake | cmake version 3.18.6 |
+| make | GNU Make 4.2.1 |
+| gtest | libgtest-dev:amd64 1.10.0-2 |
+| git | git version 2.49.0 |
+| bash | GNU bash, version 5.0.17(1)-release (x86_64-pc-linux-gnu) |
+
+## 01 - Coverage-Instrumentierung
+
+Coverage beginnt nicht beim Report, sondern beim Build.
+
+Die Option `--coverage` sorgt dafür, dass gcc/g++ zusätzlichen Messcode erzeugt.
+
+Wichtig:
+
+- gcc/g++ kompiliert und instrumentiert
+- beim Kompilieren entstehen `.gcno`-Dateien
+- beim Ausführen entstehen `.gcda`-Dateien
+- erst danach können gcov/lcov die Daten auswerten
+
+Merksatz:
+
+> gcc setzt die Messpunkte. Tests erzeugen die Laufzeitdaten.
