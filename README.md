@@ -347,3 +347,20 @@ Der Report sollte nun zeigen, dass die relevante Entscheidungslogik besser abged
 Erkenntnis:
 
 > Branch Coverage lenkt den Blick auf fachlich wichtige Übergänge, nicht nur auf ausgeführte Zeilen.
+
+## 14 - Coverage ist keine Testqualität
+
+Ein Test kann Code ausführen, ohne sinnvolle Assertions zu enthalten.
+
+Beispiel:
+
+```cpp
+nextState(RobotState::RECOVERY, false, false);
+SUCCEED();
+```
+
+Dieser Test erhöht Coverage, prüft aber kein Verhalten.
+
+Erkenntnis:
+
+> Coverage misst Ausführung, nicht Testqualität.

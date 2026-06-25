@@ -22,3 +22,9 @@ TEST(StateMachineTest, RecoversFromErrorOnReset)
         nextState(RobotState::ERROR, false, true),
         RobotState::RECOVERY);
 }
+
+TEST(StateMachineTest, ExecutesRecoveryWithoutCheckingResult)
+{
+    nextState(RobotState::ERROR, false, true);
+    SUCCEED();
+}
