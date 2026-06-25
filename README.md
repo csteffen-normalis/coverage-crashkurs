@@ -224,3 +224,20 @@ Vergleich:
 Erkenntnis:
 
 > Der produktive Coverage-Wert ist meist niedriger, aber ehrlicher.
+
+## 07 - Function Coverage
+
+Mit nur einem Test kann `decideMode()` bereits 100 % Function Coverage erreichen.
+
+Warum?
+
+Die Funktion wurde mindestens einmal betreten.
+
+Aber nicht getestet sind weiterhin:
+
+- `MANUAL`
+- `ERROR`
+
+Erkenntnis:
+
+> Function Coverage ist oft wenig aussagekräftig. Sie sagt nur, ob eine Funktion aufgerufen wurde, nicht ob ihre Logik vollständig getestet wurde.
