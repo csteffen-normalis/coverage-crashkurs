@@ -128,3 +128,15 @@ Wichtig:
 Merksatz:
 
 > gcc setzt die Messpunkte. Tests erzeugen die Laufzeitdaten.
+
+## 02 - Erster Produktivcode
+
+Die Funktion `decideMode()` enthält drei fachliche Pfade:
+
+- `AUTO`
+- `MANUAL`
+- `ERROR`
+
+Damit eignet sie sich gut, um später Function, Line und Branch Coverage zu vergleichen.
+
+Noch gibt es keine Tests. Also gibt es auch keine aussagekräftige Runtime-Coverage.

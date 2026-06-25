@@ -10,4 +10,8 @@ add_link_options(--coverage)
 
 include_directories(include)
 
+add_library(coverage_demo
+    src/mode_decision.cpp
+)
+
 enable_testing()
