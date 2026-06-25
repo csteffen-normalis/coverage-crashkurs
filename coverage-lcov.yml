@@ -1,0 +1,41 @@
+name: Coverage LCOV
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  coverage:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential cmake lcov libgtest-dev
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make -j$(nproc)
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure
+
+      - name: Generate lcov report
+        run: |
+          cd build
+          ../scripts/generate_coverage_productive.sh
+
+      - name: Upload HTML coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-lcov-html
+          path: build/coverage_productive_report

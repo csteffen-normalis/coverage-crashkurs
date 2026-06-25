@@ -448,3 +448,29 @@ Vor einem sauberen Neuversuch können sie gelöscht werden:
 Erkenntnis:
 
 > Alte `.gcda`-Dateien können Coverage-Ergebnisse verfälschen.
+
+
+## 20 - CI mit lcov
+
+Die lokal verwendete Coverage-Kette kann auch in CI laufen:
+
+```text
+Build → Test → lcov → genhtml → HTML-Artefakt
+```
+
+Vorteile:
+
+- gleiche Toolchain wie lokal
+- HTML-Report ist gut für manuelle Analyse
+- lcov/genhtml sind unter Ubuntu leicht verfügbar
+
+Nachteile:
+
+- XML-Reports für CI-Systeme müssen separat erzeugt werden
+- Excludes werden schnell unübersichtlich
+- Branch Coverage muss explizit aktiviert werden
+- Quality Gates sind nicht besonders komfortabel
+
+Erkenntnis:
+
+> lcov ist sehr gut für HTML-Reports, aber in CI oft etwas sperrig.
