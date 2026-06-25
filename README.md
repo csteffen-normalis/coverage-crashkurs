@@ -364,3 +364,19 @@ Dieser Test erhöht Coverage, prüft aber kein Verhalten.
 Erkenntnis:
 
 > Coverage misst Ausführung, nicht Testqualität.
+
+
+## 15 - Tests müssen Verhalten prüfen
+
+Der execution-only Test wurde entfernt.
+
+Gute Tests prüfen beobachtbares Verhalten:
+
+- Rückgabewerte
+- Zustandsänderungen
+- Ausgaben
+- Fehlersignale
+
+Erkenntnis:
+
+> Gute Coverage ist nur dann nützlich, wenn die Tests auch fachlich relevante Assertions enthalten.

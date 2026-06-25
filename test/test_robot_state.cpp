@@ -23,8 +23,9 @@ TEST(StateMachineTest, RecoversFromErrorOnReset)
         RobotState::RECOVERY);
 }
 
-TEST(StateMachineTest, ExecutesRecoveryWithoutCheckingResult)
+TEST(StateMachineTest, ExecutesRecoveryWithCheckingResult)
 {
-    nextState(RobotState::ERROR, false, true);
-    SUCCEED();
+    EXPECT_EQ(
+        nextState(RobotState::ERROR, false, true),
+        RobotState::RECOVERY);
 }
