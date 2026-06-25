@@ -8,3 +8,13 @@ TEST(SafetyMonitorTest, ObjectCanBeCreated)
 
     EXPECT_FALSE(monitor.emergencyStop());
 }
+
+
+TEST(SafetyMonitorTest, EmergencyStopTriggered)
+{
+    SafetyMonitor monitor;
+
+    monitor.laserCallback(true);
+
+    EXPECT_TRUE(monitor.emergencyStop());
+}

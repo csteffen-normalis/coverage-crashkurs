@@ -416,3 +416,21 @@ Callback-Code bleibt trotzdem ungetestet
 Erkenntnis:
 
 > Node startet ≠ Callback getestet.
+
+## 18 - Callback aktiv stimulieren
+
+Der Callback wird nun direkt ausgelöst:
+
+```cpp
+monitor.laserCallback(true);
+```
+
+In echten ROS1-Tests entspricht das z. B.:
+
+- Nachricht publizieren
+- Callback ausführen lassen
+- Zustand oder Ausgabe prüfen
+
+Erkenntnis:
+
+> ROS-Kommunikation muss im Test aktiv stimuliert und validiert werden.
