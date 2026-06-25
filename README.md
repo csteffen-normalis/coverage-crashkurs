@@ -495,3 +495,23 @@ gcovr
 Erkenntnis:
 
 > gcovr ist oft angenehmer, wenn Coverage-Ergebnisse maschinenlesbar in CI verarbeitet werden sollen.
+
+
+## 22 - CI mit gcovr
+
+`gcovr` eignet sich besonders gut für CI, weil es mehrere Ausgabeformate direkt erzeugen kann:
+
+- Text Summary für CI-Logs
+- HTML für manuelle Analyse
+- Cobertura XML für CI-Integration
+- optional JSON/SonarQube-Formate
+
+Typischer CI-Ablauf:
+
+```text
+Build → Test → gcovr → Text + HTML + XML
+```
+
+Erkenntnis:
+
+> gcovr reduziert in CI oft die Menge an Shell-Logik und erzeugt direkt maschinenlesbare Reports.

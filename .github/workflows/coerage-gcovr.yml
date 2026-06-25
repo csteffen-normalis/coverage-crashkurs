@@ -1,0 +1,56 @@
+name: Coverage GCOVR
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  coverage:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential cmake libgtest-dev python3-pip
+          pip3 install gcovr
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make -j$(nproc)
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure
+
+      - name: Generate gcovr reports
+        run: |
+          cd build
+          gcovr \
+            --root .. \
+            --filter '../src/.*' \
+            --exclude '../test/.*' \
+            --txt-metric branch \
+            --txt \
+            --html-details coverage_gcovr.html \
+            --cobertura-pretty \
+            --cobertura coverage.xml
+
+      - name: Upload HTML coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-gcovr-html
+          path: build/coverage_gcovr.html
+
+      - name: Upload Cobertura coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-gcovr-cobertura
+          path: build/coverage.xml
