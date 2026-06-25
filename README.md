@@ -241,3 +241,19 @@ Aber nicht getestet sind weiterhin:
 Erkenntnis:
 
 > Function Coverage ist oft wenig aussagekräftig. Sie sagt nur, ob eine Funktion aufgerufen wurde, nicht ob ihre Logik vollständig getestet wurde.
+
+## 08 - Line Coverage verbessern
+
+Der zweite Test deckt den `MANUAL`-Pfad ab.
+
+Dadurch werden mehr Zeilen im Produktivcode ausgeführt.
+
+Weiterhin fehlt aber der Fehlerpfad:
+
+```text
+sensor_ok = false => ERROR
+```
+
+Erkenntnis:
+
+> Line Coverage ist besser als Function Coverage, weil sie zeigt, welche Zeilen tatsächlich ausgeführt wurden.

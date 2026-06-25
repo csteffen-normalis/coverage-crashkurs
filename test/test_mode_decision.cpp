@@ -6,3 +6,8 @@ TEST(DecideModeTest, ReturnsAuto)
 {
     EXPECT_EQ(decideMode(true, false), Mode::AUTO);
 }
+
+TEST(DecideModeTest, ReturnsManual)
+{
+    EXPECT_EQ(decideMode(true, true), Mode::MANUAL);
+}
