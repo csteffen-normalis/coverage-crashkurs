@@ -184,3 +184,24 @@ ctest --output-on-failure
 Erkenntnis:
 
 > Coverage entsteht erst nach Build und Testausführung.
+
+## 05 - Aha-Moment: Testcode verfälscht Coverage
+
+Der Report `coverage_all_report` enthält auch Dateien aus `test/` und `usr`.
+
+Das ist problematisch, weil Testdateien oft sehr hohe Coverage haben:
+Sie werden ja beim Testlauf direkt ausgeführt.
+
+Dadurch kann die Gesamtkennzahl besser aussehen, als die Abdeckung des Produktivcodes wirklich ist.
+
+Falsche Frage:
+
+> Wie gut führen die Tests sich selbst aus?
+
+Richtige Frage:
+
+> Wie gut decken die Tests den Produktivcode ab?
+
+Erkenntnis:
+
+> Coverage-Kennzahlen sind nur sinnvoll, wenn klar ist, welche Dateien gemessen werden.
