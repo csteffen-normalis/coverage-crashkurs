@@ -515,3 +515,28 @@ Build → Test → gcovr → Text + HTML + XML
 Erkenntnis:
 
 > gcovr reduziert in CI oft die Menge an Shell-Logik und erzeugt direkt maschinenlesbare Reports.
+
+
+## 23 - Coverage-Gates mit gcovr
+
+In CI kann Coverage auch als Quality Gate verwendet werden.
+
+Wichtig:
+
+Coverage-Gates sollten vorsichtig eingesetzt werden.
+
+Sinnvoll:
+
+- Coverage-Drops verhindern
+- kritische Module schützen
+- Mindestniveau stabilisieren
+
+Nicht sinnvoll:
+
+- blind 100 % erzwingen
+- Testqualität durch Prozentzahlen ersetzen
+- generierten Code mitbewerten
+
+Erkenntnis:
+
+> Coverage-Gates sind Leitplanken, kein Qualitätsbeweis.
