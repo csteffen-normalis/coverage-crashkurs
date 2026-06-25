@@ -332,3 +332,18 @@ Erwarteter Aha-Moment im Report:
 Erkenntnis:
 
 > Branch Coverage ist besonders wertvoll für Fehler- und Recovery-Pfade.
+
+
+## 13 - Recovery-Pfad abdecken
+
+Der fehlende Recovery-Pfad wird ergänzt:
+
+```text
+ERROR + reset => RECOVERY
+```
+
+Der Report sollte nun zeigen, dass die relevante Entscheidungslogik besser abgedeckt ist.
+
+Erkenntnis:
+
+> Branch Coverage lenkt den Blick auf fachlich wichtige Übergänge, nicht nur auf ausgeführte Zeilen.

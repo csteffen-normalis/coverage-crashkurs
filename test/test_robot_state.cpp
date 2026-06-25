@@ -15,3 +15,10 @@ TEST(StateMachineTest, ObstacleCausesError)
         nextState(RobotState::DRIVING, true, false),
         RobotState::ERROR);
 }
+
+TEST(StateMachineTest, RecoversFromErrorOnReset)
+{
+    EXPECT_EQ(
+        nextState(RobotState::ERROR, false, true),
+        RobotState::RECOVERY);
+}
