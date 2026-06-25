@@ -434,3 +434,17 @@ In echten ROS1-Tests entspricht das z. B.:
 Erkenntnis:
 
 > ROS-Kommunikation muss im Test aktiv stimuliert und validiert werden.
+
+## 19 - Coverage-Daten bereinigen
+
+Coverage-Daten sind Build-Artefakte.
+
+Vor einem sauberen Neuversuch können sie gelöscht werden:
+
+```bash
+../scripts/clean_coverage.sh
+```
+
+Erkenntnis:
+
+> Alte `.gcda`-Dateien können Coverage-Ergebnisse verfälschen.
