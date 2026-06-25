@@ -13,6 +13,7 @@ include_directories(include)
 add_library(coverage_demo
     src/mode_decision.cpp
     src/robot_state.cpp
+    src/safety_monitor.cpp
 )
 
 add_executable(coverage_tests

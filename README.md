@@ -380,3 +380,14 @@ Gute Tests prüfen beobachtbares Verhalten:
 Erkenntnis:
 
 > Gute Coverage ist nur dann nützlich, wenn die Tests auch fachlich relevante Assertions enthalten.
+
+
+## 16 - ROS1-ähnlicher Callback-Code
+
+Der `SafetyMonitor` simuliert typische ROS1-Callback-Logik.
+
+In echten ROS1-Projekten wäre `laserCallback()` z. B. ein Subscriber Callback.
+
+Erkenntnis:
+
+> Callback-Code wird nur abgedeckt, wenn der Callback tatsächlich ausgelöst wird.
