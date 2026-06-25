@@ -273,3 +273,21 @@ Aber daraus folgt noch nicht automatisch:
 Erkenntnis:
 
 > Viele Teams hören bei hoher Line Coverage zu früh auf.
+
+
+## 10 - Branch Coverage einführen
+
+Nachdem klar ist, welche Dateien gemessen werden sollen, führen wir Branch Coverage als zusätzliche Metrik ein.
+
+Bisherige Fragen:
+
+- Function Coverage: Welche Funktionen wurden betreten?
+- Line Coverage: Welche Zeilen wurden ausgeführt?
+
+Neue Frage:
+
+- Branch Coverage: Welche Entscheidungswege wurden ausgeführt?
+
+Erkenntnis:
+
+> Branch Coverage zeigt, ob Bedingungen in beide Richtungen getestet wurden.
