@@ -306,3 +306,29 @@ Die Funktion `nextState()` ist bewusst einfach, zeigt aber ein typisches Muster.
 Erkenntnis:
 
 > Zustandsautomaten sind ein natürlicher Anwendungsfall für Branch Coverage.
+
+
+## 12 - Unvollständige State-Machine-Tests
+
+Die Tests decken zwei Transitionen ab:
+
+```text
+IDLE + kein Hindernis => DRIVING
+DRIVING + Hindernis => ERROR
+```
+
+Bewusst nicht getestet ist:
+
+```text
+ERROR + reset => RECOVERY
+```
+
+Erwarteter Aha-Moment im Report:
+
+- Function Coverage kann hoch sein
+- Line Coverage kann hoch wirken
+- Branch Coverage zeigt fehlende Entscheidungswege
+
+Erkenntnis:
+
+> Branch Coverage ist besonders wertvoll für Fehler- und Recovery-Pfade.

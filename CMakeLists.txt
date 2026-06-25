@@ -12,10 +12,12 @@ include_directories(include)
 
 add_library(coverage_demo
     src/mode_decision.cpp
+    src/robot_state.cpp
 )
 
 add_executable(coverage_tests
     test/test_mode_decision.cpp
+    test/test_robot_state.cpp
 )
 
 target_link_libraries(coverage_tests
