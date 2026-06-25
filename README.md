@@ -291,3 +291,18 @@ Neue Frage:
 Erkenntnis:
 
 > Branch Coverage zeigt, ob Bedingungen in beide Richtungen getestet wurden.
+
+## 11 - Robotik-nahe State Machine
+
+Robotiksoftware enthält häufig Zustandslogik:
+
+- Betriebszustände
+- Fehlerzustände
+- Recovery-Pfade
+- Fallback-Verhalten
+
+Die Funktion `nextState()` ist bewusst einfach, zeigt aber ein typisches Muster.
+
+Erkenntnis:
+
+> Zustandsautomaten sind ein natürlicher Anwendungsfall für Branch Coverage.
