@@ -391,3 +391,28 @@ In echten ROS1-Projekten wäre `laserCallback()` z. B. ein Subscriber Callback.
 Erkenntnis:
 
 > Callback-Code wird nur abgedeckt, wenn der Callback tatsächlich ausgelöst wird.
+
+
+## 17 - Callback-Fallstrick
+
+Der Test erzeugt ein Objekt und prüft den Initialzustand.
+
+Aber der Callback wird nicht aufgerufen.
+
+Nicht abgedeckt:
+
+```cpp
+laserCallback(true);
+```
+
+ROS1-Übertragung:
+
+```text
+Node startet
+Subscriber ist registriert
+Callback-Code bleibt trotzdem ungetestet
+```
+
+Erkenntnis:
+
+> Node startet ≠ Callback getestet.

@@ -19,6 +19,7 @@ add_library(coverage_demo
 add_executable(coverage_tests
     test/test_mode_decision.cpp
     test/test_robot_state.cpp
+    test/test_safety_monitor.cpp
 )
 
 target_link_libraries(coverage_tests
