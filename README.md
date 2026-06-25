@@ -257,3 +257,19 @@ sensor_ok = false => ERROR
 Erkenntnis:
 
 > Line Coverage ist besser als Function Coverage, weil sie zeigt, welche Zeilen tatsächlich ausgeführt wurden.
+
+## 09 - Line Coverage kann vollständig wirken
+
+Mit AUTO, MANUAL und ERROR sind alle sichtbaren Rückgabepfade von `decideMode()` getestet.
+
+Der Report kann jetzt sehr gute Line Coverage zeigen.
+
+Aber daraus folgt noch nicht automatisch:
+
+- dass jede Entscheidung vollständig verstanden wurde
+- dass komplexere boolesche Bedingungen gut getestet sind
+- dass Tests fachlich stark sind
+
+Erkenntnis:
+
+> Viele Teams hören bei hoher Line Coverage zu früh auf.

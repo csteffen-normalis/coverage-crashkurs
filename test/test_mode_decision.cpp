@@ -11,3 +11,8 @@ TEST(DecideModeTest, ReturnsManual)
 {
     EXPECT_EQ(decideMode(true, true), Mode::MANUAL);
 }
+
+TEST(DecideModeTest, ReturnsErrorWhenSensorFails)
+{
+    EXPECT_EQ(decideMode(false, false), Mode::ERROR);
+}
